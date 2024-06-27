@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}
+  Task List
+{% endblock %}
+
+{% block content %}
+  <div class="col-10">
+    <h1>List Tasks</h1>
+    <ul class="list-group">
+      {% for task in task_list %}
+        <li class="list-group-item">
+          <p>
+            <strong>
+              {{ task.content }}
+              <span class="text-{{ task.is_done|yesno:'success,danger' }}">
+                {{ task.is_done|yesno:"Done,Not done" }}
+              </span>
+            </strong>
+          </p>
+          <p>
+            Created: {{ task.datetime }}
+            {% if task.deadline %}
+              <span class="text-danger">
+                Deadline: {{ task.deadline }}
+              </span>
+            {% endif %}
+          </p>
+          <p class="text-secondary h6">
+            Tags:
+            {% for tag in task.tags.all %}
+            	{{ tag }}
+            {% endfor %}
+            <a href="#">Update</a>
+            <a href="#">Delete</a>
+          </p>
+          <button class="btn btn-xl bg-{{ task.is_done|yesno:'success,secondary'}} text-white">
+            {{ task.is_done|yesno:"Undo,Complete" }}
+          </button>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+{% endblock %}
