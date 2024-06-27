@@ -7,6 +7,7 @@ class Tag(models.Model):
     def __str__(self):
         return self.name
 
+
 class Task(models.Model):
     content = models.TextField(
         verbose_name="Task Description"
