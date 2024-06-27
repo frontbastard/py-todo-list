@@ -2,12 +2,12 @@
 {% load crispy_forms_filters %}
 
 {% block title %}
-  {{ object|yesno:"Update,Create" }} Tag
+  {{ object|yesno:"Update,Create" }} Task
 {% endblock %}
 
 {% block content %}
       <div class="col-10">
-        <h1>{{ object|yesno:"Update,Create" }} Tag</h1>
+        <h1>{{ object|yesno:"Update,Create" }} Task</h1>
         <form action="" method="post" novalidate>
           {% csrf_token %}
           {{ form|crispy }}
