@@ -31,7 +31,7 @@ class Task(models.Model):
     )
 
     def __str__(self):
-        return f"{self.content[:50]}..."
+        return f"{self.content[:50]}{'...' if len(self.content) > 50 else ''}"
 
     class Meta:
         ordering = ["is_done", "-datetime"]
